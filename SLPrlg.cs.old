@@ -1,0 +1,650 @@
+﻿using System;
+using System.Net;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Ink;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using System.Collections.Generic;
+
+namespace SLProlog
+{
+    public class Token
+    {
+        public const int CT_TERMINAL = -1;
+        public const int CT_NULL = 0;
+        public const int CT_WHITESPACE = 1;
+        public const int CT_ALPHA = 2;
+        public const int CT_NUMBER = 3;
+        public const int CT_PARENTHEIS = 4;
+        public const int CT_COMMA = 5;
+        public const int CT_PRIOD = 6;
+        public const int CT_OPERATOR = 7;
+
+        public string value;
+        public int token_type;
+    }
+    public class Parser
+    {
+        string source;
+        int spos;
+        int token_list_current;
+
+        Stack<char> unread_char;
+        List<Token> token_list;
+        public int GetCharType(char ch)
+        {
+            switch(ch){
+                case '(':
+                case ')':
+                    return Token.CT_PARENTHEIS;
+                case ',':
+                    return Token.CT_COMMA;
+                case '.':
+                    return Token.CT_PRIOD;
+                case '=':
+                case ':':
+                case '-':
+                case '>':
+                    return Token.CT_OPERATOR;
+            }
+            if(char.IsLetter(ch))
+            {
+                return Token.CT_ALPHA;
+            }
+            if(char.IsWhiteSpace(ch))
+            {
+                return Token.CT_WHITESPACE;
+            }
+            if(char.IsNumber(ch))
+            {
+                return Token.CT_NUMBER;
+            }
+            return Token.CT_ALPHA;
+        }
+
+        public Parser(string s)
+        {
+            source = s;
+            spos = 0;
+            unread_char = new Stack<char>();
+            token_list = new List<Token>();
+            token_list_current = 0;
+        }
+
+        
+        public bool GetCh(ref char ch)
+        {
+            if (unread_char.Count != 0)
+            {
+                ch = unread_char.Pop();
+                return true;
+            }
+            if (source.Length <= spos)
+                return false;
+            ch = source[spos++];
+            if (ch == '\0')
+            {
+                spos--;
+                return false;
+            }
+            return true;
+        }
+        public void UnreadChar(char ch)
+        {
+            if (ch == '\0')
+                return;
+            unread_char.Push(ch);
+        }
+        public void UnreadToken(Token tok)
+        {
+            token_list_current--;
+        }
+        public bool RequestToken(int token_type, ref Token token)
+        {
+            Token tok = null;
+            if (!GetToken(ref tok))
+                return false;
+            if (tok.token_type == token_type)
+            {
+                token = tok;
+                return true;
+            }
+            else
+            {
+                UnreadToken(tok);
+                return false;
+            }
+
+        }
+        public bool RequestTokenStr(string ch, ref Token token)
+        {
+            Token tok = null;
+            if (!GetToken(ref tok))
+                return false;
+            if (tok.value == ch)
+            {
+                token = tok;
+                return true;
+            }
+            else
+            {
+                UnreadToken(tok);
+                return false;
+            }
+
+        }
+        public int CurTokenPos()
+        {
+            return token_list_current;
+        }
+        public void RestoreTokenPos(int pos)
+        {
+            token_list_current = pos;
+        }
+
+        public bool GetToken(ref Token token)
+        {
+            if (token_list.Count <= token_list_current)
+                return false;
+            token = token_list[token_list_current++];
+            return true;
+        }
+
+        public bool ParseToken(ref Token token)
+        {
+            token = new Token();
+            token.token_type = Token.CT_NULL;
+            token.value = "";
+            int ct_now = Token.CT_NULL;
+            while (ct_now != Token.CT_TERMINAL)
+            {
+                char ch = '\0';
+                if (!GetCh(ref ch))
+                {
+                    ch = '\0';
+                    ct_now = Token.CT_TERMINAL;
+                    if (token.token_type == Token.CT_NULL)
+                    {
+                        return false;
+                    }
+                }
+                else
+                    ct_now = GetCharType(ch);
+                if (token.token_type == Token.CT_NULL)
+                {
+                    token.token_type = ct_now;
+                }
+                if(ct_now == token.token_type &&
+                   (   ct_now == Token.CT_WHITESPACE 
+                    || ct_now == Token.CT_ALPHA
+                    || ct_now == Token.CT_NUMBER
+                    || ct_now == Token.CT_OPERATOR
+                    )
+                    )
+                {
+                    token.value += ch;
+                    continue;
+                }
+                if(
+                    (token.token_type == Token.CT_ALPHA && ct_now == Token.CT_NUMBER) 
+                    || (token.token_type == Token.CT_NUMBER && ct_now == Token.CT_ALPHA && token.token_type == Token.CT_ALPHA)
+                )
+                {
+                    token.value += ch;
+                    continue;
+                }
+
+                // divide
+                    
+                if(token.token_type == Token.CT_WHITESPACE)
+                {
+                    token.token_type = Token.CT_NULL;
+                    token.value = "";
+                    UnreadChar(ch);
+                    continue;
+                }
+                if (token.token_type == Token.CT_NUMBER || token.token_type == Token.CT_ALPHA || token.token_type == Token.CT_OPERATOR)
+                {
+                    UnreadChar(ch);
+                    return true;
+                }
+                if (ct_now == Token.CT_PARENTHEIS || ct_now == Token.CT_COMMA || ct_now == Token.CT_PRIOD)
+                {
+                    token.value += ch;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void ParseAllToken()
+        {
+            Token token = null;
+            while (ParseToken(ref token))
+            {
+                token_list.Add(token);
+            }
+            token = new Token();
+            token.value = "";
+            token.token_type = Token.CT_TERMINAL;
+            token_list.Add(token);
+
+            return;
+        }
+
+        private void ParseError(String msg)
+        {
+            throw new Exception("パースエラー: " + msg + " (Token:" + token_list[token_list_current == 0 ? 0 : token_list_current - 1].value + ")");
+        }
+
+        public bool Parse_term(ref Term term)
+        {
+            Token name = null, pydummy = null;
+            int ctp = CurTokenPos();
+            if (RequestToken(Token.CT_ALPHA, ref name))
+            {
+                if (char.IsUpper(name.value[0]))
+                    term = Term.var(name.value);
+                else
+                    term = Term.imm(name.value);
+                if (!RequestTokenStr("(", ref pydummy))
+                {
+                    return true;
+                }
+                if (term.IsFunction())
+                    ParseError("述語は変数にできません");
+                while (true)
+                {
+                    Term prm = null;
+                    Parse_term(ref prm);
+
+                    term.AddPrm(prm);
+                    if (RequestTokenStr(")", ref pydummy))
+                        break;
+                    if (!RequestTokenStr(",", ref pydummy))
+                        ParseError("パラメータの後には、コンマか丸括弧が必要です");
+                }
+                return true;
+            }
+            ParseError("項はアルファベットで始まる必要があります");
+            return false;
+        }
+
+        public bool Parse_clause(ref Clause clause)
+        {
+            Token dummy_token = null;
+            Term head = null;
+            clause = new Clause();
+
+            Parse_term(ref head);
+            clause.head = head;
+
+            if(RequestTokenStr(".", ref dummy_token))
+                return true;
+            if(!RequestTokenStr(":-", ref dummy_token))
+                ParseError("節のヘッドの後にはピリオドか:-が必要です");
+            while(true)
+            {
+                Term body = null;
+                Parse_term(ref body);
+                clause.body.Add(body);
+
+                if(RequestTokenStr(".", ref dummy_token))
+                    break;
+                if(!RequestTokenStr(",", ref dummy_token))
+                    ParseError("ボディ部の項(term)の後にはコンマかピリオドが必要です");
+            }
+            return true;
+        }
+
+        public bool Parse_program(ref PrologProgram prog)
+        {
+            Token dummy_token = null;
+            prog = new PrologProgram();
+            while (true)
+            {
+                if(RequestToken(Token.CT_TERMINAL, ref dummy_token))
+                    break;
+                Clause clause = null;
+                Parse_clause(ref clause);
+                prog.Add(clause);
+            }
+            return true;
+        }
+
+    }
+
+    public class Term
+    {
+        private bool variable;
+        private string value;
+        private int scopenum;
+        private List<Term> children;
+
+        public Term()
+        {
+            variable = false;
+            value = "";
+            children = null;
+            scopenum = -1;
+        }
+
+        public void SetScopeNum(int num)
+        {
+            if (scopenum != -1)
+                throw new Exception("ScopeNumber override.");
+            scopenum = num;
+            if(children != null)
+                foreach(Term t in children)
+                {
+                    t.SetScopeNum(num);
+                }
+        }
+        public static Term var(string name)
+        {
+            Term t = new Term();
+            t.SetAsVar(name);
+            return t;
+        }
+
+        public static Term imm(string name, params Term[] terms)
+        {
+            Term t = new Term();
+            t.value = name;
+            t.children = new List<Term>();
+            foreach (Term c in terms)
+            {
+                t.children.Add(c);
+            }
+            return t;
+        }
+
+        public void SetValue(string val)
+        {
+            value = val;
+            variable = false;
+        }
+
+        public string GetValue()
+        {
+            if(variable)
+                return value + "$" + scopenum.ToString();
+            else
+                return value;
+        }
+
+        public void SetAsVar(string name)
+        {
+            value = name;
+            variable = true;
+            children = null;
+        }
+
+        public bool IsVariable()
+        {
+            return variable;
+        }
+
+        public bool IsFunction()
+        {
+            return GetPrmCount() != 0;
+        }
+
+        public int GetPrmCount()
+        {
+            if (children != null)
+                return children.Count;
+            else
+                return 0;            
+        }
+
+        public Term GetPrm(int i)
+        {
+            return children[i];
+        }
+        public void AddPrm(Term term)
+        {
+            children.Add(term);
+        }
+        public string ToStr()
+        {
+            string ret = "";
+
+            if (variable)
+                ret += "?";
+            if (value.Length == 0)
+                ret += "[NoName]";
+            else
+                ret += GetValue();
+
+            if (GetPrmCount() == 0)
+                return ret;
+            ret += "(";
+            for (int i = 0; i < GetPrmCount(); i++ )
+            {
+                if (i != 0)
+                    ret += ", ";
+                ret += children[i].ToStr();
+            }
+            ret += ")";
+            return ret;
+        }
+
+        public Term ReplaceVar(Dictionary<string, Term> dict)
+        {
+            if (IsVariable())
+            {
+                if (dict.ContainsKey(GetValue()))
+                    return dict[GetValue()];
+                return this;
+            }
+            else
+            {
+                if (GetPrmCount() == 0)
+                    return this;
+
+                Term newc = new Term();
+                newc.SetValue(GetValue());
+                newc.children = new List<Term>();
+                for (int i = 0; i < GetPrmCount(); i++)
+                {
+                    newc.children.Add(children[i].ReplaceVar(dict));
+                }
+                return newc;
+            }
+        }
+
+    }
+    public class Clause
+    {
+        public Term head;
+        public List<Term> body;
+        public int ID;
+        
+
+        public Clause()
+        {
+            body = new List<Term>();
+            ID = Prolog.GetUniqueNum();
+        }
+
+        public string GetSubject()
+        {
+            return head.GetValue();
+        }
+        public void UpdateScopeNum()
+        {
+            head.SetScopeNum(ID);
+            foreach(Term t in body)
+            {
+                t.SetScopeNum(ID);
+            }
+        }
+        public Clause ReplaceVar(Dictionary<string, Term> dict)
+        {
+            Clause newc = new Clause();
+            newc.head = head.ReplaceVar(dict);
+            foreach (Term t in body)
+            {
+                newc.body.Add(t.ReplaceVar(dict));
+            }
+            return newc;
+        }
+    }
+    public class PrologProgram
+    {
+        public Dictionary<string, List<Clause>> data;
+        public PrologProgram()
+        {
+            data = new Dictionary<string, List<Clause>>();
+        }
+        public void Add(Clause cl)
+        {
+            if(!data.ContainsKey(cl.GetSubject()))
+                data[cl.GetSubject()] = new List<Clause>();
+            data[cl.GetSubject()].Add(cl);
+        }
+        
+    }
+
+    public class Prolog
+    {
+        static private int serialNum = 1;
+        public static int GetUniqueNum()
+        {
+            return serialNum++;
+        }
+        public static bool Unify(Term a, Term b, Dictionary<string, Term> dict)
+        {
+            if (a.IsVariable())
+            {
+                if (dict.ContainsKey(a.GetValue()))
+                {
+                    return Unify(dict[a.GetValue()], b, dict);
+                }
+                else
+                {
+                    dict.Add(a.GetValue(), b);
+                    return true;
+                }
+            }
+            else if (b.IsVariable())
+            {
+                if (dict.ContainsKey(b.GetValue()))
+                {
+                    return Unify(a, dict[b.GetValue()], dict);
+                }
+                else
+                {
+                    dict.Add(b.GetValue(), a);
+                    return true;
+                }
+            }
+
+            if (a.GetValue() != b.GetValue())
+            {
+                return false;
+            }
+            if (a.GetPrmCount() != b.GetPrmCount())
+            {
+                return false;
+            }
+
+            if (!a.IsFunction())
+            {
+                return true;
+            }
+            else
+            {
+                for (int i = 0; i < a.GetPrmCount(); i++)
+                {
+                    if (!Unify(a.GetPrm(i), b.GetPrm(i), dict))
+                        return false;
+                }
+                return true;
+            }
+        }
+    }
+    public class Env
+    {
+        PrologProgram program;
+        public Env()
+        {
+            program = new PrologProgram();
+        }
+
+        public bool LoadProgram(PrologProgram newprog)
+        {
+            foreach (KeyValuePair<string, List<Clause>> i in newprog.data)
+            {
+                foreach (Clause c in i.Value)
+                {
+                    c.UpdateScopeNum();
+                    program.Add(c);
+                }
+            }
+            return true;
+        }
+
+        public bool LoadProgramFromString(string prog_str)
+        {
+            Parser parser = new Parser(prog_str);
+            parser.ParseAllToken();
+            PrologProgram newprog = null;
+            parser.Parse_program(ref newprog);
+            return LoadProgram(newprog);
+        }
+
+        public void ClearProgram()
+        {
+            program = new PrologProgram();
+        }
+
+        public bool Solve1(Term goal, ref Dictionary<string, Term> dict)
+        {
+            goal.SetScopeNum(Prolog.GetUniqueNum());
+            foreach (Dictionary<string, Term> d in Solve(goal))
+            {
+                dict = d;
+                return true;
+            }
+            return false;
+        }
+
+        public IEnumerable<Dictionary<string, Term>> RunBody(Clause c, int idx, Dictionary<string, Term> dict)
+        {
+            Clause c_applied = c.ReplaceVar(dict);
+            if (c_applied.body.Count == idx)
+            {
+                yield return dict;
+            }
+            else foreach (Dictionary<string, Term> d in Solve(c_applied.body[idx]))
+            {
+                foreach (Dictionary<string, Term> d2 in RunBody(c_applied, idx + 1, d))
+                    yield return d2;
+            }
+        }
+
+        public IEnumerable<Dictionary<string, Term>> Solve(Term goal)
+        {
+            
+            List<Clause> clist = program.data[goal.GetValue()];
+            foreach (Clause c in clist)
+            {
+                Dictionary<string, Term> cldict = new Dictionary<string,Term>();
+                if (Prolog.Unify(goal, c.head, cldict))
+                {
+                    foreach (Dictionary<string, Term> d in RunBody(c, 0, cldict))
+                    {
+                        yield return d;
+                    }
+                }
+            }
+        }
+    }
+
+}

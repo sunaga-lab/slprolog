@@ -1,0 +1,62 @@
+﻿<UserControl xmlns:basics="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"  x:Class="SLProlog.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="640" Height="520" Loaded="UserControl_Loaded">
+    <basics:TabControl>
+        <basics:TabItem Header="Program">
+            
+        <Grid Background="White">
+        
+        <Grid.RowDefinitions>
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="300" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="80" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">Goal:</TextBlock>
+        <TextBox Name="ProgGoal" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" Margin="2" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="3"></TextBox>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5">Result:</TextBlock>
+        <TextBox Name="ProgResult" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" Margin="2" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="6"></TextBox>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">Info:</TextBlock>
+        <TextBox Name="LogBox" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" Margin="2" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1"></TextBox>
+
+        <Button Name="ProgRunBtn" Content="Run" Margin="2" Grid.Column="1" Grid.Row="4" Click="ProgRun_Click">
+        </Button>
+        <Button Name="ProgNextBtn" Content="Next" IsEnabled="False" Margin="2" Grid.Column="3" Grid.Row="4" Click="ProgNext_Click">
+        </Button>
+
+    </Grid>
+    </basics:TabItem>
+        <basics:TabItem Header="Source Code">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="460" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="620" />
+            </Grid.ColumnDefinitions>
+
+            
+            <TextBlock Name="ProgLabel"  Margin="2" Grid.Column="0" Grid.Row="0">
+                Program Source Code
+            </TextBlock>
+                <TextBox Name="ProgText" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" Margin="2" Grid.Column="0" Grid.Row="1"></TextBox>
+           
+            </Grid>
+        </basics:TabItem>
+    </basics:TabControl>
+</UserControl>

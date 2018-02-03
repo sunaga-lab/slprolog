@@ -1,0 +1,981 @@
+Goal: slow_sort([7,6,5,4,3,2,1], ?L$0)
+(*)L$0 = [1,2,3,4,5,6,7]
+?
+false.
+Total time spent compiling 617 methods (sec): 0.05496
+Slowest method to compile (sec): 0.001834: CSPrologJay.Parser::yyparse(yyInput)
+Time(ms) Count   P/call(ms) Method name
+########################
+ 260450.469  257584    1.011   .<RunBody>c__Iterator2::MoveNext()
+  Callers (with count) that contribute at least for 1%:
+      141912  55 % .<RunBody>c__Iterator2::MoveNext()
+      115672  44 % .<Solve>c__Iterator3::MoveNext()
+########################
+ 163998.627  122912    1.334   .<Solve>c__Iterator3::MoveNext()
+  Callers (with count) that contribute at least for 1%:
+      122910  99 % .<RunBody>c__Iterator2::MoveNext()
+########################
+ 47373.921  630491    0.075   CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+  Callers (with count) that contribute at least for 1%:
+      572073  90 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+       58418   9 % .<RunBody>c__Iterator2::MoveNext()
+########################
+ 32576.197       1  32576.197   SLProlog.SLProlog::runtime_invoke_void_object(object,intptr,intptr,intptr)
+  Callers (with count) that contribute at least for 1%:
+########################
+ 32576.196       1  32576.196   SLProlog.SLProlog::Main(string[])
+  Callers (with count) that contribute at least for 1%:
+           1  100 % SLProlog.SLProlog::runtime_invoke_void_object(object,intptr,intptr,intptr)
+########################
+ 11792.060   64492    0.183   CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+  Callers (with count) that contribute at least for 1%:
+       64492  100 % .<RunBody>c__Iterator2::MoveNext()
+########################
+ 11754.622  424049    0.028   CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+  Callers (with count) that contribute at least for 1%:
+      315870  74 % CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+      108179  25 % .<Solve>c__Iterator3::MoveNext()
+########################
+ 8869.995 1135790    0.008   CSProlog.Term::DeepCopy(int)
+  Callers (with count) that contribute at least for 1%:
+      914393  80 % CSProlog.Term::DeepCopy(int)
+      113218   9 % CSProlog.Clause::NewFrame(int)
+      108179   9 % .<Solve>c__Iterator3::MoveNext()
+########################
+ 7981.508 1754412    0.005   CSProlog.Term::GetValue()
+  Callers (with count) that contribute at least for 1%:
+      848098  48 % CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+      730437  41 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+       99520   5 % .<Solve>c__Iterator3::MoveNext()
+       58419   3 % CSProlog.EmbeddedPredicateStore::FindPredicate(Term,EPBase&)
+########################
+ 4925.225 1049022    0.005   System.Int32::ToString()
+  Callers (with count) that contribute at least for 1%:
+      990600  94 % CSProlog.Term::GetValue()
+       58419   5 % CSProlog.EmbeddedPredicateStore::FindPredicate(Term,EPBase&)
+########################
+ 4804.989 2069511    0.002   System.Collections.Generic.Dictionary`2::set_Item(TKey,TValue)
+  Callers (with count) that contribute at least for 1%:
+     2069483  99 % CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+########################
+ 4575.622 1049022    0.004   System.NumberFormatter::NumberToString(int,IFormatProvider)
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.Int32::ToString()
+########################
+ 3343.323 1289062    0.003   System.Collections.Generic.List`1::Add(T)
+  Callers (with count) that contribute at least for 1%:
+      914393  70 % CSProlog.Term::DeepCopy(int)
+      315225  24 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+       58419   4 % CSProlog.Clause::NewFrame(int)
+########################
+ 3186.579 1049022    0.003   System.NumberFormatter::FastIntegerToString(int,IFormatProvider)
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.NumberFormatter::NumberToString(int,IFormatProvider)
+########################
+ 2919.046   54799    0.053   CSProlog.Env::GoClause(Clause,Dictionary`2<string, Term>)
+  Callers (with count) that contribute at least for 1%:
+       54799  100 % .<Solve>c__Iterator3::MoveNext()
+########################
+ 2879.647 6138352    0.000   System.Collections.Generic.GenericEqualityComparer`1::GetHashCode(string)
+  Callers (with count) that contribute at least for 1%:
+     2207943  35 % System.Collections.Generic.Dictionary`2::ContainsKey(TKey)
+     2069511  33 % System.Collections.Generic.Dictionary`2::set_Item(TKey,TValue)
+     1341451  21 % System.Collections.Generic.Dictionary`2::Resize()
+      315358   5 % System.Collections.Generic.Dictionary`2::get_Item(TKey)
+      204072   3 % System.Collections.Generic.Dictionary`2::Add(TKey,TValue)
+########################
+ 2847.830   54799    0.052   CSProlog.Clause::NewFrame(int)
+  Callers (with count) that contribute at least for 1%:
+       54799  100 % CSProlog.Env::GoClause(Clause,Dictionary`2<string, Term>)
+########################
+ 2828.134 1049019    0.003   System.String::Concat(string,string,string)
+  Callers (with count) that contribute at least for 1%:
+      990600  94 % CSProlog.Term::GetValue()
+       58419   5 % CSProlog.EmbeddedPredicateStore::FindPredicate(Term,EPBase&)
+########################
+ 2522.811  608615    0.004   System.Collections.Generic.List`1::GrowIfNeeded(int)
+  Callers (with count) that contribute at least for 1%:
+      608615  100 % System.Collections.Generic.List`1::Add(T)
+########################
+ 2505.983 2069642    0.001   .Enumerator::get_Current()
+  Callers (with count) that contribute at least for 1%:
+     2069483  99 % CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+########################
+ 2174.900 2207943    0.001   System.Collections.Generic.Dictionary`2::ContainsKey(TKey)
+  Callers (with count) that contribute at least for 1%:
+     1570254  71 % CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+      325346  14 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+      204072   9 % CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+       58419   2 % CSProlog.EmbeddedPredicateStore::FindPredicate(Term,EPBase&)
+       49760   2 % .<Solve>c__Iterator3::MoveNext()
+########################
+ 2102.606  608615    0.003   System.Collections.Generic.List`1::set_Capacity(int)
+  Callers (with count) that contribute at least for 1%:
+      608615  100 % System.Collections.Generic.List`1::GrowIfNeeded(int)
+########################
+ 2004.562 4197900    0.000   System.String::CharCopy(char*,char*,int)
+  Callers (with count) that contribute at least for 1%:
+     3147057  74 % System.String::Concat(string,string,string)
+     1049022  24 % System.String::CreateString(char[],int,int)
+########################
+ 1872.725  608615    0.003   System.Array::Resize(T[]&,int)
+  Callers (with count) that contribute at least for 1%:
+      608615  100 % System.Collections.Generic.List`1::set_Capacity(int)
+########################
+ 1797.624 1049022    0.002   System.String::.ctor(char[],int,int)
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.NumberFormatter::FastIntegerToString(int,IFormatProvider)
+########################
+ 1643.277  608615    0.003   System.Array::Resize(T[]&,int,int)
+  Callers (with count) that contribute at least for 1%:
+      608615  100 % System.Array::Resize(T[]&,int)
+########################
+ 1442.760   63704    0.023   System.Collections.Generic.Dictionary`2::Resize()
+  Callers (with count) that contribute at least for 1%:
+       63704  100 % System.Collections.Generic.Dictionary`2::set_Item(TKey,TValue)
+########################
+ 1423.882 1049022    0.001   System.String::CreateString(char[],int,int)
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.String::.ctor(char[],int,int)
+########################
+ 1057.068 2198644    0.000   .Enumerator::MoveNext()
+  Callers (with count) that contribute at least for 1%:
+     2198467  99 % CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+########################
+ 1031.329  608619    0.002   System.Array::Copy(Array,Array,int)
+  Callers (with count) that contribute at least for 1%:
+      608615  99 % System.Array::Resize(T[]&,int,int)
+########################
+ 1008.621 2069642    0.000   .Enumerator::VerifyCurrent()
+  Callers (with count) that contribute at least for 1%:
+     2069642  100 % .Enumerator::get_Current()
+########################
+ 900.946 6138352    0.000   System.String::GetHashCode()
+  Callers (with count) that contribute at least for 1%:
+     6138352  100 % System.Collections.Generic.GenericEqualityComparer`1::GetHashCode(string)
+########################
+ 834.182 5837786    0.000   System.Object::stelemref(object,intptr,object)
+  Callers (with count) that contribute at least for 1%:
+     4139022  70 % System.Collections.Generic.Dictionary`2::set_Item(TKey,TValue)
+     1289062  22 % System.Collections.Generic.List`1::Add(T)
+      408144   6 % System.Collections.Generic.Dictionary`2::Add(TKey,TValue)
+########################
+ 798.752 1569067    0.001   System.Object::__icall_wrapper_mono_array_new_specific(intptr,int)
+  Callers (with count) that contribute at least for 1%:
+      705248  44 % System.Collections.Generic.Dictionary`2::InitArrays(int)
+      608615  38 % System.Array::Resize(T[]&,int,int)
+      254816  16 % System.Collections.Generic.Dictionary`2::Resize()
+########################
+ 795.095 2386115    0.000   System.Object::__icall_wrapper_mono_object_new_specific(intptr)
+  Callers (with count) that contribute at least for 1%:
+     1614640  67 % CSProlog.Term::DeepCopy(int)
+      296486  12 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+      119291   4 % CSProlog.Env::RunBody(Clause,int,Dictionary`2<string, Term>)
+      108179   4 % .<Solve>c__Iterator3::MoveNext()
+       64492   2 % CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+       58419   2 % CSProlog.Env::Solve(Term)
+       54799   2 % CSProlog.Clause::NewFrame(int)
+       54799   2 % CSProlog.Clause::.ctor()
+########################
+ 716.064  176296    0.004   System.Collections.Generic.Dictionary`2::.ctor()
+  Callers (with count) that contribute at least for 1%:
+      108179  61 % .<Solve>c__Iterator3::MoveNext()
+       64492  36 % CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+        3620   2 % CSProlog.Prolog::EmptyDict()
+########################
+ 671.141 2102102    0.000   System.String::InternalAllocateStr(int)
+  Callers (with count) that contribute at least for 1%:
+     1049022  49 % System.String::CreateString(char[],int,int)
+     1049019  49 % System.String::Concat(string,string,string)
+########################
+ 648.501  176312    0.004   System.Collections.Generic.Dictionary`2::Init(int,IEqualityComparer`1<TKey>)
+  Callers (with count) that contribute at least for 1%:
+      176296  99 % System.Collections.Generic.Dictionary`2::.ctor()
+########################
+ 575.586 4268286    0.000   .Enumerator::VerifyState()
+  Callers (with count) that contribute at least for 1%:
+     2198644  51 % .Enumerator::MoveNext()
+     2069642  48 % .Enumerator::VerifyCurrent()
+########################
+ 576.098   58419    0.010   CSProlog.EmbeddedPredicateStore::FindPredicate(Term,EPBase&)
+  Callers (with count) that contribute at least for 1%:
+       58419  100 % .<Solve>c__Iterator3::MoveNext()
+########################
+ 574.959  315358    0.002   System.Collections.Generic.Dictionary`2::get_Item(TKey)
+  Callers (with count) that contribute at least for 1%:
+      256848  81 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+       49760  15 % .<Solve>c__Iterator3::MoveNext()
+        8659   2 % CSProlog.EmbeddedPredicateStore::FindPredicate(Term,EPBase&)
+########################
+ 511.584  176312    0.003   System.Collections.Generic.Dictionary`2::InitArrays(int)
+  Callers (with count) that contribute at least for 1%:
+      176312  100 % System.Collections.Generic.Dictionary`2::Init(int,IEqualityComparer`1<TKey>)
+########################
+ 504.007  630697    0.001   System.Collections.Generic.GenericEqualityComparer`1::Equals(string,string)
+  Callers (with count) that contribute at least for 1%:
+      315358  50 % System.Collections.Generic.Dictionary`2::get_Item(TKey)
+      315336  49 % System.Collections.Generic.Dictionary`2::ContainsKey(TKey)
+########################
+ 475.711 1049022    0.000   System.NumberFormatter::GetInstance()
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.NumberFormatter::NumberToString(int,IFormatProvider)
+########################
+ 452.897 3148548    0.000   System.String::memcpy4(byte*,byte*,int)
+  Callers (with count) that contribute at least for 1%:
+     3148532  99 % System.String::CharCopy(char*,char*,int)
+########################
+ 406.390  736036    0.001   System.Array::Copy(Array,int,Array,int,int)
+  Callers (with count) that contribute at least for 1%:
+      608619  82 % System.Array::Copy(Array,Array,int)
+      127408  17 % System.Collections.Generic.Dictionary`2::Resize()
+########################
+ 321.562  204072    0.002   System.Collections.Generic.Dictionary`2::Add(TKey,TValue)
+  Callers (with count) that contribute at least for 1%:
+      204072  100 % CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+########################
+ 306.665  649304    0.000   CSProlog.Term::GetPrm(int)
+  Callers (with count) that contribute at least for 1%:
+      631740  97 % CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+       17318   2 % .<Apply>c__Iterator0::MoveNext()
+########################
+ 306.071  583575    0.001   System.Collections.Generic.List`1::GetEnumerator()
+  Callers (with count) that contribute at least for 1%:
+      478850  82 % CSProlog.Term::DeepCopy(int)
+       54799   9 % CSProlog.Clause::NewFrame(int)
+       49760   8 % .<Solve>c__Iterator3::MoveNext()
+########################
+ 302.161  630697    0.000   System.String::Equals(string)
+  Callers (with count) that contribute at least for 1%:
+      630697  100 % System.Collections.Generic.GenericEqualityComparer`1::Equals(string,string)
+########################
+ 294.520 2069642    0.000   System.Collections.Generic.KeyValuePair`2::.ctor(TKey,TValue)
+  Callers (with count) that contribute at least for 1%:
+     2069642  100 % .Enumerator::get_Current()
+########################
+ 260.655 1825804    0.000   System.NumberFormatter::FastAppendDigits(int,bool)
+  Callers (with count) that contribute at least for 1%:
+     1825804  100 % System.NumberFormatter::FastIntegerToString(int,IFormatProvider)
+########################
+ 238.295 1742670    0.000   CSProlog.Term::GetPrmCount()
+  Callers (with count) that contribute at least for 1%:
+      768613  44 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+      748580  42 % CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+      166889   9 % CSProlog.Term::IsFunction()
+       58419   3 % CSProlog.EmbeddedPredicateStore::FindPredicate(Term,EPBase&)
+########################
+ 231.886 1664828    0.000   .Enumerator::MoveNext()
+  Callers (with count) that contribute at least for 1%:
+     1393243  83 % CSProlog.Term::DeepCopy(int)
+      157939   9 % .<Solve>c__Iterator3::MoveNext()
+      113218   6 % CSProlog.Clause::NewFrame(int)
+########################
+ 188.286 1217303    0.000   System.Array::GetLowerBound(int)
+  Callers (with count) that contribute at least for 1%:
+     1217238  99 % System.Array::Copy(Array,Array,int)
+########################
+ 173.555 1284440    0.000   CSProlog.Term::.ctor()
+  Callers (with count) that contribute at least for 1%:
+     1135790  88 % CSProlog.Term::DeepCopy(int)
+      148243  11 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+########################
+ 153.416  736036    0.000   System.Array::FastCopy(Array,int,Array,int,int)
+  Callers (with count) that contribute at least for 1%:
+      736036  100 % System.Array::Copy(Array,int,Array,int,int)
+########################
+ 147.838 1081253    0.000   .Enumerator::get_Current()
+  Callers (with count) that contribute at least for 1%:
+      914393  84 % CSProlog.Term::DeepCopy(int)
+      108179  10 % .<Solve>c__Iterator3::MoveNext()
+       58419   5 % CSProlog.Clause::NewFrame(int)
+########################
+ 145.644 1049368    0.000   System.String::memcpy2(byte*,byte*,int)
+  Callers (with count) that contribute at least for 1%:
+     1049368  100 % System.String::CharCopy(char*,char*,int)
+########################
+ 142.696 1049022    0.000   System.NumberFormatter::Release()
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.NumberFormatter::NumberToString(int,IFormatProvider)
+########################
+ 143.167 1049022    0.000   System.NumberFormatter::ResetCharBuf(int)
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.NumberFormatter::FastIntegerToString(int,IFormatProvider)
+########################
+ 144.084 1049022    0.000   System.Threading.Thread::AcquireNumberFormatter()
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.NumberFormatter::GetInstance()
+########################
+ 139.547 1023994    0.000   System.Collections.Generic.List`1::get_Item(int)
+  Callers (with count) that contribute at least for 1%:
+      649304  63 % CSProlog.Term::GetPrm(int)
+      315225  30 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+       58418   5 % .<RunBody>c__Iterator2::MoveNext()
+########################
+ 126.116  850915    0.000   System.String::Equals(string,string)
+  Callers (with count) that contribute at least for 1%:
+      630697  74 % System.String::Equals(string)
+      219993  25 % System.String::op_Inequality(string,string)
+########################
+ 105.302  219993    0.000   System.String::op_Inequality(string,string)
+  Callers (with count) that contribute at least for 1%:
+      219977  99 % CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+########################
+  84.502  119291    0.001   CSProlog.Env::RunBody(Clause,int,Dictionary`2<string, Term>)
+  Callers (with count) that contribute at least for 1%:
+       64492  54 % .<RunBody>c__Iterator2::MoveNext()
+       54799  45 % CSProlog.Env::GoClause(Clause,Dictionary`2<string, Term>)
+########################
+  82.985  608615    0.000   System.Collections.Generic.List`1::get_Capacity()
+  Callers (with count) that contribute at least for 1%:
+      608615  100 % System.Collections.Generic.List`1::GrowIfNeeded(int)
+########################
+  82.067  166889    0.000   CSProlog.Term::IsFunction()
+  Callers (with count) that contribute at least for 1%:
+      166597  99 % CSProlog.Prolog::Unify(Term,Term,Dictionary`2<string, Term>,StringBuilder)
+########################
+  79.391  583575    0.000   .Enumerator::.ctor(List`1<T>)
+  Callers (with count) that contribute at least for 1%:
+      583575  100 % System.Collections.Generic.List`1::GetEnumerator()
+########################
+  66.663   12279    0.005   .<Apply>c__Iterator0::MoveNext()
+  Callers (with count) that contribute at least for 1%:
+       12279  100 % .<Solve>c__Iterator3::MoveNext()
+########################
+  65.937  128986    0.001   System.Collections.Generic.Dictionary`2::GetEnumerator()
+  Callers (with count) that contribute at least for 1%:
+      128984  99 % CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+########################
+  58.926       1   58.926   CSProlog.Env::LoadProgramFromString(string)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % SLProlog.SLProlog::Main(string[])
+########################
+  49.891       2   24.945   CSProlog.Env::ParseObject(string,int)
+  Callers (with count) that contribute at least for 1%:
+           1  50 % CSProlog.Env::LoadProgramFromString(string)
+           1  50 % CSProlog.Env::LoadTermFromString(string)
+########################
+  43.228   58419    0.001   CSProlog.Env::Solve(Term)
+  Callers (with count) that contribute at least for 1%:
+       58418  99 % .<RunBody>c__Iterator2::MoveNext()
+########################
+  37.332   54799    0.001   CSProlog.Clause::.ctor()
+  Callers (with count) that contribute at least for 1%:
+       54799  100 % CSProlog.Clause::NewFrame(int)
+########################
+  31.374     506    0.062   CSProlog.Tokenizer::ParseToken(Token&)
+  Callers (with count) that contribute at least for 1%:
+         506  100 % CSProlog.Tokenizer::ParseAllToken()
+########################
+  32.169       2   16.084   CSProlog.Tokenizer::ParseAllToken()
+  Callers (with count) that contribute at least for 1%:
+           2  100 % CSProlog.Tokenizer::.ctor(int,string)
+########################
+  32.867    8659    0.004   CSProlog.EmbeddedPredicateStore::<LoadDefaultPredicates>m__2(Term,Term)
+  Callers (with count) that contribute at least for 1%:
+        8659  100 % .<Apply>c__Iterator0::MoveNext()
+########################
+  32.981       2   16.491   CSProlog.Tokenizer::.ctor(int,string)
+  Callers (with count) that contribute at least for 1%:
+           2  100 % CSProlog.Env::ParseObject(string,int)
+########################
+  27.814   17318    0.002   CSProlog.Term::GetIntegerValue()
+  Callers (with count) that contribute at least for 1%:
+       17318  100 % CSProlog.EmbeddedPredicateStore::<LoadDefaultPredicates>m__2(Term,Term)
+########################
+  27.218  176312    0.000   System.Collections.Generic.EqualityComparer`1::get_Default()
+  Callers (with count) that contribute at least for 1%:
+      176312  100 % System.Collections.Generic.Dictionary`2::Init(int,IEqualityComparer`1<TKey>)
+########################
+  23.055    1610    0.014   CSProlog.Tokenizer::GetCharType(char)
+  Callers (with count) that contribute at least for 1%:
+        1610  100 % CSProlog.Tokenizer::ParseToken(Token&)
+########################
+  24.022      40    0.601   System.Object::runtime_invoke_void(object,intptr,intptr,intptr)
+  Callers (with count) that contribute at least for 1%:
+           2   5 % System.IO.FileStream::.ctor(string,FileMode,FileAccess,FileShare,int,bool,FileOptions)
+           2   5 % SLProlog.SLProlog::Main(string[])
+           2   5 % System.Text.Encoding::.ctor(int)
+           2   5 % System.Console::.cctor()
+           2   5 % System.Globalization.CultureInfo::ConstructInvariant(bool)
+           2   5 % System.Globalization.CompareInfo::.ctor(CultureInfo)
+           2   5 % Mono.Globalization.Unicode.SimpleCollator::.ctor(CultureInfo)
+           2   5 % Mono.Globalization.Unicode.MSCompatUnicodeTable::BuildTailoringTables(CultureInfo,TailoringInfo,Contraction[]&,Level2Map[]&)
+           1   2 % System.IO.FileStream::.ctor(string,FileMode)
+           1   2 % System.IO.Path::.cctor()
+           1   2 % System.Char::ToString()
+           1   2 % System.IO.StreamReader::.ctor()
+           1   2 % System.Collections.Generic.Dictionary`2::Init(int,IEqualityComparer`1<TKey>)
+           1   2 % System.Collections.Generic.EqualityComparer`1::.cctor()
+           1   2 % System.MonoType::GetConstructorImpl(BindingFlags,Binder,CallingConventions,Type[],ParameterModifier[])
+           1   2 % System.MonoType::CheckMethodSecurity(MethodBase)
+           1   2 % System.Activator::CreateInstance(Type,bool)
+           1   2 % CSPrologJay.Parser::.ctor()
+           1   2 % System.IO.UnexceptionalStreamWriter::.ctor(Stream,Encoding)
+           1   2 % System.IO.StreamWriter::.ctor(Stream,Encoding,int)
+           1   2 % CSProlog.Tokenizer::.ctor(int,string)
+           1   2 % System.String::IndexOf(string)
+           1   2 % System.Globalization.CultureInfo::get_CurrentCulture()
+           1   2 % System.Globalization.CultureInfo::get_CompareInfo()
+           1   2 % System.Globalization.CompareInfo::.cctor()
+           1   2 % Mono.Globalization.Unicode.MSCompatUnicodeTable::FillCJK(string,CodePointIndexer&,byte*&,byte*&,CodePointIndexer&,byte*&)
+           1   2 % System.Collections.Hashtable::set_Item(object,object)
+           1   2 % CSProlog.ParserLogger::.ctor()
+           1   2 % CSProlog.Term::imm(string,Term[])
+           1   2 % System.Int32::ToString()
+           1   2 % CSProlog.PrologProgram::Add(Clause)
+########################
+  20.375    1610    0.013   System.String::Contains(string)
+  Callers (with count) that contribute at least for 1%:
+        1610  100 % CSProlog.Tokenizer::GetCharType(char)
+########################
+  18.937  138293    0.000   .<RunBody>c__Iterator2::System.Collections.Generic.IEnumerator`1[[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CSProlog.Term, SLPrlg, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].get_Current()
+  Callers (with count) that contribute at least for 1%:
+       77420  55 % .<RunBody>c__Iterator2::MoveNext()
+       60873  44 % .<Solve>c__Iterator3::MoveNext()
+########################
+  19.688    1610    0.012   System.String::IndexOf(string)
+  Callers (with count) that contribute at least for 1%:
+        1610  100 % System.String::Contains(string)
+########################
+  17.883  129002    0.000   .Enumerator::.ctor(Dictionary`2<TKey, TValue>)
+  Callers (with count) that contribute at least for 1%:
+      128986  99 % System.Collections.Generic.Dictionary`2::GetEnumerator()
+########################
+  18.061     247    0.073   CSProlog.Term::ForAllTerm(Term/ForAllTermDelegate)
+  Callers (with count) that contribute at least for 1%:
+         195  78 % CSProlog.Term::ForAllTerm(Term/ForAllTermDelegate)
+          51  20 % CSProlog.Clause::ForAllTerm(Term/ForAllTermDelegate)
+########################
+  16.662    3620    0.005   CSProlog.Prolog::EmptyDict()
+  Callers (with count) that contribute at least for 1%:
+        3620  100 % .<Apply>c__Iterator0::MoveNext()
+########################
+  14.809     148    0.100   System.String::EndsWith(string)
+  Callers (with count) that contribute at least for 1%:
+         148  100 % SLProlog.SLProlog::Main(string[])
+########################
+  15.451   17318    0.001   System.Int32::Parse(string)
+  Callers (with count) that contribute at least for 1%:
+       17318  100 % CSProlog.Term::GetIntegerValue()
+########################
+  16.192  119291    0.000   .<RunBody>c__Iterator2::Dispose()
+  Callers (with count) that contribute at least for 1%:
+       64492  54 % .<RunBody>c__Iterator2::MoveNext()
+       54799  45 % .<Solve>c__Iterator3::MoveNext()
+########################
+  17.004  119291    0.000   .<RunBody>c__Iterator2::System.Collections.Generic.IEnumerable`1[[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CSProlog.Term, SLPrlg, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].GetEnumerator()
+  Callers (with count) that contribute at least for 1%:
+       64492  54 % .<RunBody>c__Iterator2::MoveNext()
+       54799  45 % .<Solve>c__Iterator3::MoveNext()
+########################
+  14.249     148    0.096   Mono.Globalization.Unicode.SimpleCollator::IsSuffix(string,string,int,int,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+         148  100 % Mono.Globalization.Unicode.SimpleCollator::IsSuffix(string,string,CompareOptions)
+########################
+  14.438     148    0.098   System.Globalization.CompareInfo::IsSuffix(string,string,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+         148  100 % System.String::EndsWith(string)
+########################
+  14.353     148    0.097   Mono.Globalization.Unicode.SimpleCollator::IsSuffix(string,string,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+         148  100 % System.Globalization.CompareInfo::IsSuffix(string,string,CompareOptions)
+########################
+  13.128     148    0.089   Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,byte*,SimpleCollator/Context&)
+  Callers (with count) that contribute at least for 1%:
+         148  100 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,CompareOptions)
+########################
+  13.878     148    0.094   Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+         148  100 % Mono.Globalization.Unicode.SimpleCollator::IsSuffix(string,string,int,int,CompareOptions)
+########################
+  11.384       2    5.692   CSPrologJay.Parser::yyparse(yyInput,object)
+  Callers (with count) that contribute at least for 1%:
+           2  100 % CSProlog.Env::ParseObject(string,int)
+########################
+  11.718     310    0.038   Mono.Globalization.Unicode.SimpleCollator::IsPrefix(string,string,int,int,bool,SimpleCollator/Context&)
+  Callers (with count) that contribute at least for 1%:
+         162  52 % Mono.Globalization.Unicode.SimpleCollator::IsPrefix(string,string,int,int,CompareOptions)
+         148  47 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,byte*,SimpleCollator/Context&)
+########################
+   9.492   63706    0.000   System.Collections.Hashtable::ToPrime(int)
+  Callers (with count) that contribute at least for 1%:
+       63704  99 % System.Collections.Generic.Dictionary`2::Resize()
+########################
+   9.944    1920    0.005   System.Globalization.CultureInfo::get_CompareInfo()
+  Callers (with count) that contribute at least for 1%:
+        1610  83 % System.String::IndexOf(string)
+         162   8 % System.String::StartsWith(string)
+         148   7 % System.String::EndsWith(string)
+########################
+   9.527       2    4.764   CSPrologJay.Parser::yyparse(yyInput)
+  Callers (with count) that contribute at least for 1%:
+           2  100 % CSPrologJay.Parser::yyparse(yyInput,object)
+########################
+   9.238      58    0.159   CSProlog.Env::ResolveTerm(Term,Dictionary`2<string, Term>)
+  Callers (with count) that contribute at least for 1%:
+          57  98 % CSProlog.Env::ResolveTerm(Term,Dictionary`2<string, Term>)
+           1   1 % SLProlog.SLProlog::Main(string[])
+########################
+   7.484     247    0.030   CSProlog.Env::TermAnonyNamer(Term)
+  Callers (with count) that contribute at least for 1%:
+         247  100 % CSProlog.Term::ForAllTerm(Term/ForAllTermDelegate)
+########################
+   8.453   64493    0.000   .<Solve>c__Iterator3::System.Collections.Generic.IEnumerator`1[[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CSProlog.Term, SLPrlg, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].get_Current()
+  Callers (with count) that contribute at least for 1%:
+       64492  99 % .<RunBody>c__Iterator2::MoveNext()
+########################
+   9.275       1    9.275   CSProlog.Env::LoadProgram(PrologProgram)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % CSProlog.Env::LoadProgramFromString(string)
+########################
+   9.427   17318    0.001   System.Int32::Parse(string,bool,int&,Exception&)
+  Callers (with count) that contribute at least for 1%:
+       17318  100 % System.Int32::Parse(string)
+########################
+  10.095     311    0.032   Mono.Globalization.Unicode.SimpleCollator::CompareInternal(string,int,int,string,int,int,bool&,bool&,bool,bool,SimpleCollator/Context&)
+  Callers (with count) that contribute at least for 1%:
+         310  99 % Mono.Globalization.Unicode.SimpleCollator::IsPrefix(string,string,int,int,bool,SimpleCollator/Context&)
+########################
+   5.392     162    0.033   Mono.Globalization.Unicode.SimpleCollator::IsPrefix(string,string,int,int,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+         162  100 % Mono.Globalization.Unicode.SimpleCollator::IsPrefix(string,string,CompareOptions)
+########################
+   5.535     162    0.034   Mono.Globalization.Unicode.SimpleCollator::IsPrefix(string,string,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+         162  100 % System.Globalization.CompareInfo::IsPrefix(string,string,CompareOptions)
+########################
+   5.979     162    0.037   System.String::StartsWith(string)
+  Callers (with count) that contribute at least for 1%:
+         162  100 % CSProlog.Env::TermAnonyNamer(Term)
+########################
+   5.588       1    5.588   System.Collections.Generic.EqualityComparer`1::static_rgctx_invoke_void()
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Object::runtime_invoke_void(object,intptr,intptr,intptr)
+########################
+   5.615    8659    0.001   CSProlog.EmbeddedPredicate.EP_ArithmeticCompareOperater::Apply(Term)
+  Callers (with count) that contribute at least for 1%:
+        8659  100 % .<Solve>c__Iterator3::MoveNext()
+########################
+   6.370       2    3.185   CSProlog.PrologProgram::.ctor()
+  Callers (with count) that contribute at least for 1%:
+           1  50 % CSProlog.Env::.ctor()
+           1  50 % CSPrologJay.Parser::yyparse(yyInput)
+########################
+   6.906       2    3.453   Mono.Globalization.Unicode.SimpleCollator::.ctor(CultureInfo)
+  Callers (with count) that contribute at least for 1%:
+           1  50 % Mono.Globalization.Unicode.SimpleCollator::.cctor()
+           1  50 % System.Globalization.CompareInfo::.ctor(CultureInfo)
+########################
+   7.262       1    7.262   CSProlog.Env::.ctor()
+  Callers (with count) that contribute at least for 1%:
+           1  100 % SLProlog.SLProlog::Main(string[])
+########################
+   7.895   58419    0.000   .<Solve>c__Iterator3::Dispose()
+  Callers (with count) that contribute at least for 1%:
+       58418  99 % .<RunBody>c__Iterator2::MoveNext()
+########################
+   8.304   58419    0.000   .<Solve>c__Iterator3::System.Collections.Generic.IEnumerable`1[[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CSProlog.Term, SLPrlg, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].GetEnumerator()
+  Callers (with count) that contribute at least for 1%:
+       58418  99 % .<RunBody>c__Iterator2::MoveNext()
+########################
+   7.907      24    0.329   CSProlog.Clause::ForAllTerm(Term/ForAllTermDelegate)
+  Callers (with count) that contribute at least for 1%:
+          24  100 % CSProlog.Env::LoadProgram(PrologProgram)
+########################
+   8.429       1    8.429   System.Globalization.CompareInfo::.ctor(CultureInfo)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Globalization.CultureInfo::get_CompareInfo()
+########################
+   5.865       1    5.865   Mono.Globalization.Unicode.SimpleCollator::.cctor()
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Object::runtime_invoke_void(object,intptr,intptr,intptr)
+########################
+   3.173       1    3.173   System.IO.StreamReader::ReadToEnd()
+  Callers (with count) that contribute at least for 1%:
+           1  100 % SLProlog.SLProlog::Main(string[])
+########################
+   3.017    1610    0.002   System.Globalization.CompareInfo::internal_index_switch(string,int,int,string,CompareOptions,bool)
+  Callers (with count) that contribute at least for 1%:
+        1610  100 % System.Globalization.CompareInfo::IndexOf(string,string,int,int,CompareOptions)
+########################
+   3.621       1    3.621   System.Activator::CreateInstance(Type,bool)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Activator::CreateInstance(Type)
+########################
+   4.328       1    4.328   System.Activator::CreateInstance(Type)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Collections.Generic.EqualityComparer`1::.cctor()
+########################
+   4.523    1040    0.004   Mono.Globalization.Unicode.SimpleCollator::MatchesBackward(string,int&,int,int,int,byte*,bool,SimpleCollator/Context&)
+  Callers (with count) that contribute at least for 1%:
+        1040  100 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOfSortKey(string,int,int,int,byte*,int,bool,SimpleCollator/Context&)
+########################
+   4.923     295    0.017   Mono.Globalization.Unicode.SimpleCollator::LastIndexOfSortKey(string,int,int,int,byte*,int,bool,SimpleCollator/Context&)
+  Callers (with count) that contribute at least for 1%:
+         295  100 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,byte*,SimpleCollator/Context&)
+########################
+   5.306       1    5.306   System.Collections.Generic.EqualityComparer`1::.cctor()
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Collections.Generic.EqualityComparer`1::static_rgctx_invoke_void()
+########################
+   5.614     162    0.035   System.Globalization.CompareInfo::IsPrefix(string,string,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+         162  100 % System.String::StartsWith(string)
+########################
+   2.370       3    0.790   System.IO.StreamReader::Read(char[],int,int)
+  Callers (with count) that contribute at least for 1%:
+           3  100 % System.IO.StreamReader::ReadToEnd()
+########################
+   1.187    1612    0.001   CSProlog.Tokenizer::GetCh(char&)
+  Callers (with count) that contribute at least for 1%:
+        1612  100 % CSProlog.Tokenizer::ParseToken(Token&)
+########################
+   1.306     220    0.006   CSProlog.Term::imm(string,Term[])
+  Callers (with count) that contribute at least for 1%:
+         161  73 % CSPrologJay.Parser::yyparse(yyInput)
+          29  13 % CSProlog.Term::ListToDotList(List`1<Term>,Term)
+          16   7 % CSProlog.Term::Number(string)
+          12   5 % CSProlog.Term::EmptyList()
+########################
+   1.157       5    0.231   System.IO.UnexceptionalStreamWriter::Write(string)
+  Callers (with count) that contribute at least for 1%:
+           4  80 % System.IO.TextWriter::WriteLine(string)
+           1  20 % System.IO.SynchronizedWriter::Write(string)
+########################
+   1.072     508    0.002   CSProlog.TokenizerJay::token()
+  Callers (with count) that contribute at least for 1%:
+         508  100 % CSPrologJay.Parser::yyparse(yyInput)
+########################
+   1.144      11    0.104   System.IO.UnexceptionalStreamWriter::Flush()
+  Callers (with count) that contribute at least for 1%:
+           5  45 % System.IO.StreamWriter::Write(string)
+           4  36 % System.IO.StreamWriter::Write(char[])
+           2  18 % System.IO.StreamWriter::set_AutoFlush(bool)
+########################
+   1.149      48    0.024   CSProlog.PrologProgram::Add(Clause)
+  Callers (with count) that contribute at least for 1%:
+          24  50 % CSPrologJay.Parser::yyparse(yyInput)
+          24  50 % CSProlog.Env::LoadProgram(PrologProgram)
+########################
+   1.173    8659    0.000   .<Apply>c__Iterator0::Dispose()
+  Callers (with count) that contribute at least for 1%:
+        8659  100 % .<Solve>c__Iterator3::MoveNext()
+########################
+   1.274    8659    0.000   .<Apply>c__Iterator0::System.Collections.Generic.IEnumerable`1[[System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CSProlog.Term, SLPrlg, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].GetEnumerator()
+  Callers (with count) that contribute at least for 1%:
+        8659  100 % .<Solve>c__Iterator3::MoveNext()
+########################
+   1.986       1    1.986   System.Globalization.CultureInfo::.cctor()
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Object::runtime_invoke_void(object,intptr,intptr,intptr)
+########################
+   1.109       5    0.222   System.IO.StreamWriter::Write(string)
+  Callers (with count) that contribute at least for 1%:
+           5  100 % System.IO.UnexceptionalStreamWriter::Write(string)
+########################
+   1.846       4    0.462   System.IO.StreamReader::ReadBuffer()
+  Callers (with count) that contribute at least for 1%:
+           3  75 % System.IO.StreamReader::Read(char[],int,int)
+           1  25 % System.IO.StreamReader::Read()
+########################
+   1.721       1    1.721   System.Globalization.CultureInfo::ConstructInvariant(bool)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Globalization.CultureInfo::.ctor(int,bool,bool)
+########################
+   1.575    3436    0.000   Mono.Globalization.Unicode.MSCompatUnicodeTable::Category(int)
+  Callers (with count) that contribute at least for 1%:
+        3436  100 % Mono.Globalization.Unicode.SimpleCollator::Category(int)
+########################
+   1.977       2    0.989   System.Globalization.CultureInfo::.ctor(int,bool,bool)
+  Callers (with count) that contribute at least for 1%:
+           1  50 % System.Globalization.CultureInfo::.cctor()
+           1  50 % System.Globalization.CultureInfo::.ctor(int,bool)
+########################
+   2.248       1    2.248   System.Type::GetConstructor(BindingFlags,Binder,CallingConventions,Type[],ParameterModifier[])
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Activator::CreateInstance(Type,bool)
+########################
+   2.845       2    1.422   Mono.Globalization.Unicode.MSCompatUnicodeTable::FillCJK(string,CodePointIndexer&,byte*&,byte*&,CodePointIndexer&,byte*&)
+  Callers (with count) that contribute at least for 1%:
+           2  100 % Mono.Globalization.Unicode.SimpleCollator::SetCJKTable(CultureInfo,CodePointIndexer&,byte*&,byte*&,CodePointIndexer&,byte*&)
+########################
+   3.505       1    3.505   System.IO.FileStream::.ctor(string,FileMode,FileAccess,FileShare,int,bool,FileOptions)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.IO.FileStream::.ctor(string,FileMode)
+########################
+   3.442     913    0.004   Mono.Globalization.Unicode.SimpleCollator::MatchesBackwardCore(string,int&,int,int,int,byte*,bool,SimpleCollator/ExtenderType,Contraction&,SimpleCollator/Context&)
+  Callers (with count) that contribute at least for 1%:
+         913  100 % Mono.Globalization.Unicode.SimpleCollator::MatchesBackward(string,int&,int,int,int,byte*,bool,SimpleCollator/Context&)
+########################
+   2.721    2812    0.001   System.String::.ctor(char,int)
+  Callers (with count) that contribute at least for 1%:
+        1610  57 % CSProlog.Tokenizer::GetCharType(char)
+        1202  42 % System.Char::ToString()
+########################
+   2.775    3436    0.001   Mono.Globalization.Unicode.SimpleCollator::Category(int)
+  Callers (with count) that contribute at least for 1%:
+        2086  60 % Mono.Globalization.Unicode.SimpleCollator::CompareInternal(string,int,int,string,int,int,bool&,bool&,bool,bool,SimpleCollator/Context&)
+        1054  30 % Mono.Globalization.Unicode.SimpleCollator::MatchesBackwardCore(string,int&,int,int,int,byte*,bool,SimpleCollator/ExtenderType,Contraction&,SimpleCollator/Context&)
+         296   8 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,byte*,SimpleCollator/Context&)
+########################
+   3.725    1610    0.002   System.Globalization.CompareInfo::IndexOf(string,string,int,int,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+        1610  100 % System.Globalization.CompareInfo::IndexOf(string,string,int,int)
+########################
+   4.634       1    4.634   System.IO.FileStream::.ctor(string,FileMode)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % SLProlog.SLProlog::Main(string[])
+########################
+   4.930     167    0.030   CSProlog.Term::CommaListToList(Term,List`1<Term>)
+  Callers (with count) that contribute at least for 1%:
+          89  53 % CSProlog.Term::CommaListToList(Term,List`1<Term>)
+          78  46 % CSProlog.Term::CommaListToList(Term)
+########################
+   4.787       2    2.394   CSPrologJay.Parser::.ctor()
+  Callers (with count) that contribute at least for 1%:
+           2  100 % CSProlog.Env::ParseObject(string,int)
+########################
+   4.300    1201    0.004   System.String::Concat(object,object)
+  Callers (with count) that contribute at least for 1%:
+        1201  100 % CSProlog.Tokenizer::ParseToken(Token&)
+########################
+   4.585       1    4.585   System.IO.FileStream::.ctor(string,FileMode)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.IO.FileStream::.ctor(string,FileMode)
+########################
+   4.417    1610    0.003   System.Globalization.CompareInfo::IndexOf(string,string,int,int)
+  Callers (with count) that contribute at least for 1%:
+        1610  100 % System.String::IndexOf(string)
+########################
+   4.083       1    4.083   System.Console::.cctor()
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Object::runtime_invoke_void(object,intptr,intptr,intptr)
+########################
+   1.093      11    0.099   System.IO.StreamWriter::Flush()
+  Callers (with count) that contribute at least for 1%:
+          11  100 % System.IO.UnexceptionalStreamWriter::Flush()
+########################
+   1.502       4    0.376   System.IO.SynchronizedWriter::WriteLine(string)
+  Callers (with count) that contribute at least for 1%:
+           4  100 % System.Console::WriteLine(string)
+########################
+   1.465       4    0.366   System.IO.TextWriter::WriteLine(string)
+  Callers (with count) that contribute at least for 1%:
+           4  100 % System.IO.SynchronizedWriter::WriteLine(string)
+########################
+   1.707       2    0.854   Mono.Globalization.Unicode.MSCompatUnicodeTable::FillCJKCore(string,CodePointIndexer&,byte*&,byte*&,CodePointIndexer&,byte*&)
+  Callers (with count) that contribute at least for 1%:
+           2  100 % Mono.Globalization.Unicode.MSCompatUnicodeTable::FillCJK(string,CodePointIndexer&,byte*&,byte*&,CodePointIndexer&,byte*&)
+########################
+   2.705       2    1.353   Mono.Globalization.Unicode.MSCompatUnicodeTable::BuildTailoringTables(CultureInfo,TailoringInfo,Contraction[]&,Level2Map[]&)
+  Callers (with count) that contribute at least for 1%:
+           2  100 % Mono.Globalization.Unicode.SimpleCollator::.ctor(CultureInfo)
+########################
+   1.372       1    1.372   System.Text.Encoding::GetEncoding(string)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % SLProlog.SLProlog::Main(string[])
+########################
+   1.111     913    0.001   Mono.Globalization.Unicode.SimpleCollator::GetTailContraction(string,int,int)
+  Callers (with count) that contribute at least for 1%:
+         913  100 % Mono.Globalization.Unicode.SimpleCollator::MatchesBackwardCore(string,int&,int,int,int,byte*,bool,SimpleCollator/ExtenderType,Contraction&,SimpleCollator/Context&)
+########################
+   1.176    1512    0.001   Mono.Globalization.Unicode.SimpleCollator::Level2(int,SimpleCollator/ExtenderType)
+  Callers (with count) that contribute at least for 1%:
+        1210  80 % Mono.Globalization.Unicode.SimpleCollator::CompareInternal(string,int,int,string,int,int,bool&,bool&,bool,bool,SimpleCollator/Context&)
+         154  10 % Mono.Globalization.Unicode.SimpleCollator::MatchesBackwardCore(string,int&,int,int,int,byte*,bool,SimpleCollator/ExtenderType,Contraction&,SimpleCollator/Context&)
+         148   9 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,byte*,SimpleCollator/Context&)
+########################
+   1.241    1921    0.001   System.Threading.Thread::get_CurrentCulture()
+  Callers (with count) that contribute at least for 1%:
+        1920  99 % System.Globalization.CultureInfo::get_CurrentCulture()
+########################
+   1.224       4    0.306   System.Collections.ArrayList::Sort(IComparer)
+  Callers (with count) that contribute at least for 1%:
+           4  100 % Mono.Globalization.Unicode.MSCompatUnicodeTable::BuildTailoringTables(CultureInfo,TailoringInfo,Contraction[]&,Level2Map[]&)
+########################
+   1.332    1505    0.001   Mono.Globalization.Unicode.SimpleCollator::GetContraction(string,int,int)
+  Callers (with count) that contribute at least for 1%:
+        1210  80 % Mono.Globalization.Unicode.SimpleCollator::CompareInternal(string,int,int,string,int,int,bool&,bool&,bool,bool,SimpleCollator/Context&)
+         295  19 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,byte*,SimpleCollator/Context&)
+########################
+   1.198    9324    0.000   Mono.Globalization.Unicode.CodePointIndexer::ToIndex(int)
+  Callers (with count) that contribute at least for 1%:
+        3436  36 % Mono.Globalization.Unicode.MSCompatUnicodeTable::Category(int)
+        1512  16 % Mono.Globalization.Unicode.MSCompatUnicodeTable::Level2(int)
+        1507  16 % Mono.Globalization.Unicode.MSCompatUnicodeTable::Level1(int)
+        1506  16 % Mono.Globalization.Unicode.MSCompatUnicodeTable::Level3(int)
+        1363  14 % Mono.Globalization.Unicode.MSCompatUnicodeTable::IsIgnorable(int,byte)
+########################
+   1.262      19    0.066   System.Array::qsort(Array,Array,int,int,IComparer)
+  Callers (with count) that contribute at least for 1%:
+          18  94 % System.Array::qsort(Array,Array,int,int,IComparer)
+           1   5 % System.Array::Sort(Array,Array,int,int,IComparer)
+########################
+   1.228    1507    0.001   Mono.Globalization.Unicode.SimpleCollator::Level1(int)
+  Callers (with count) that contribute at least for 1%:
+        1210  80 % Mono.Globalization.Unicode.SimpleCollator::CompareInternal(string,int,int,string,int,int,bool&,bool&,bool,bool,SimpleCollator/Context&)
+         149   9 % Mono.Globalization.Unicode.SimpleCollator::MatchesBackwardCore(string,int&,int,int,int,byte*,bool,SimpleCollator/ExtenderType,Contraction&,SimpleCollator/Context&)
+         148   9 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,byte*,SimpleCollator/Context&)
+########################
+   1.474       2    0.737   CSProlog.Term::ToStr()
+  Callers (with count) that contribute at least for 1%:
+           2  100 % SLProlog.SLProlog::Main(string[])
+########################
+   1.421       1    1.421   System.ConsoleDriver::.cctor()
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Object::runtime_invoke_void(object,intptr,intptr,intptr)
+########################
+   2.270    1920    0.001   System.Globalization.CultureInfo::get_CurrentCulture()
+  Callers (with count) that contribute at least for 1%:
+        1610  83 % System.String::IndexOf(string)
+         162   8 % System.String::StartsWith(string)
+         148   7 % System.String::EndsWith(string)
+########################
+   1.174       1    1.174   CSProlog.Env::LoadTermFromString(string)
+  Callers (with count) that contribute at least for 1%:
+           1  100 % SLProlog.SLProlog::Main(string[])
+########################
+   1.201       4    0.300   System.Array::Sort(Array,int,int,IComparer)
+  Callers (with count) that contribute at least for 1%:
+           4  100 % System.Collections.ArrayList::Sort(IComparer)
+########################
+   1.256    1363    0.001   Mono.Globalization.Unicode.SimpleCollator::IsIgnorable(int,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+        1214  89 % Mono.Globalization.Unicode.SimpleCollator::CompareInternal(string,int,int,string,int,int,bool&,bool&,bool,bool,SimpleCollator/Context&)
+         149  10 % Mono.Globalization.Unicode.SimpleCollator::LastIndexOf(string,string,int,int,byte*,SimpleCollator/Context&)
+########################
+   1.971    1202    0.002   System.Char::ToString()
+  Callers (with count) that contribute at least for 1%:
+        1201  99 % System.String::Concat(object,object)
+########################
+   2.560   17718    0.000   System.Char::IsWhiteSpace(char)
+  Callers (with count) that contribute at least for 1%:
+       17318  97 % System.Int32::Parse(string,bool,int&,Exception&)
+         400   2 % CSProlog.Tokenizer::GetCharType(char)
+########################
+   2.966       2    1.483   Mono.Globalization.Unicode.SimpleCollator::SetCJKTable(CultureInfo,CodePointIndexer&,byte*&,byte*&,CodePointIndexer&,byte*&)
+  Callers (with count) that contribute at least for 1%:
+           2  100 % Mono.Globalization.Unicode.SimpleCollator::.ctor(CultureInfo)
+########################
+   1.553      18    0.086   CSProlog.Term::ToStrImpl(StringBuilder,Dictionary`2<string, Term>)
+  Callers (with count) that contribute at least for 1%:
+          14  77 % CSProlog.Term::ToStrList(StringBuilder,Dictionary`2<string, Term>)
+           2  11 % CSProlog.Term::ToStr()
+           2  11 % CSProlog.Term::ToStrImpl(StringBuilder,Dictionary`2<string, Term>)
+########################
+   1.631    2812    0.001   System.String::CreateString(char,int)
+  Callers (with count) that contribute at least for 1%:
+        2812  100 % System.String::.ctor(char,int)
+########################
+   1.546       4    0.387   System.Console::WriteLine(string)
+  Callers (with count) that contribute at least for 1%:
+           4  100 % SLProlog.SLProlog::Main(string[])
+########################
+   1.984       1    1.984   System.MonoType::GetConstructorImpl(BindingFlags,Binder,CallingConventions,Type[],ParameterModifier[])
+  Callers (with count) that contribute at least for 1%:
+           1  100 % System.Type::GetConstructor(BindingFlags,Binder,CallingConventions,Type[],ParameterModifier[])
+########################
+   2.731      78    0.035   CSProlog.Term::CommaListToList(Term)
+  Callers (with count) that contribute at least for 1%:
+          65  83 % CSPrologJay.Parser::yyparse(yyInput)
+          13  16 % CSProlog.Clause::.ctor(Term)
+########################
+   1.637    1610    0.001   Mono.Globalization.Unicode.SimpleCollator::IndexOf(string,string,int,int,CompareOptions)
+  Callers (with count) that contribute at least for 1%:
+        1610  100 % System.Globalization.CompareInfo::internal_index_managed(string,int,int,string,CompareOptions,bool)
+########################
+   2.385    1610    0.001   System.Globalization.CompareInfo::internal_index_managed(string,int,int,string,CompareOptions,bool)
+  Callers (with count) that contribute at least for 1%:
+        1610  100 % System.Globalization.CompareInfo::internal_index_switch(string,int,int,string,CompareOptions,bool)
+Total number of calls: 87756487
+
+Allocation profiler
+Total mem Method
+########################
+   90777 KB System.Collections.Generic.Dictionary`2::Resize()
+       35713 KB    63702 .Link[]                                         
+       18354 KB    63704 System.Int32[]                                  
+       18354 KB    63704 System.String[]                                 
+       18354 KB    63702 CSProlog.Term[]                                 
+  Callers (with count) that contribute at least for 1%:
+       63704  100 % System.Collections.Generic.Dictionary`2::set_Item(TKey,TValue)
+########################
+   52342 KB System.Collections.Generic.Dictionary`2::InitArrays(int)
+       19283 KB   176309 .Link[]                                         
+       11019 KB   176312 System.Int32[]                                  
+       11019 KB   176312 System.String[]                                 
+       11019 KB   176309 CSProlog.Term[]                                 
+  Callers (with count) that contribute at least for 1%:
+      176312  100 % System.Collections.Generic.Dictionary`2::Init(int,IEqualityComparer`1<TKey>)
+########################
+   40409 KB CSProlog.Term::DeepCopy(int)
+       31056 KB  1135790 CSProlog.Term                                   
+        9352 KB   478850 System.Collections.Generic.List`1               
+  Callers (with count) that contribute at least for 1%:
+      914393  80 % CSProlog.Term::DeepCopy(int)
+      113218   9 % CSProlog.Clause::NewFrame(int)
+      108179   9 % .<Solve>c__Iterator3::MoveNext()
+########################
+   28593 KB System.String::Concat(string,string,string)
+       28593 KB  1049019 System.String                                   
+  Callers (with count) that contribute at least for 1%:
+      990600  94 % CSProlog.Term::GetValue()
+       58419   5 % CSProlog.EmbeddedPredicateStore::FindPredicate(Term,EPBase&)
+########################
+   23470 KB System.String::CreateString(char[],int,int)
+       23470 KB  1049022 System.String                                   
+  Callers (with count) that contribute at least for 1%:
+     1049022  100 % System.String::.ctor(char[],int,int)
+########################
+   19023 KB System.Array::Resize(T[]&,int,int)
+       19018 KB   608581 CSProlog.Term[]                                 
+  Callers (with count) that contribute at least for 1%:
+      608615  100 % System.Array::Resize(T[]&,int)
+########################
+    6948 KB CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+        4053 KB   148243 CSProlog.Term                                   
+        2895 KB   148243 System.Collections.Generic.List`1               
+  Callers (with count) that contribute at least for 1%:
+      572073  90 % CSProlog.Term::ReplaceVar(Dictionary`2<string, Term>)
+       58418   9 % .<RunBody>c__Iterator2::MoveNext()
+########################
+    6523 KB CSProlog.Env::RunBody(Clause,int,Dictionary`2<string, Term>)
+        6523 KB   119291 .<RunBody>c__Iterator2                          
+  Callers (with count) that contribute at least for 1%:
+       64492  54 % .<RunBody>c__Iterator2::MoveNext()
+       54799  45 % CSProlog.Env::GoClause(Clause,Dictionary`2<string, Term>)
+########################
+    5493 KB .<Solve>c__Iterator3::MoveNext()
+        5493 KB   108179 System.Collections.Generic.Dictionary`2         
+  Callers (with count) that contribute at least for 1%:
+      122910  99 % .<RunBody>c__Iterator2::MoveNext()
+########################
+    4563 KB CSProlog.Env::Solve(Term)
+        4563 KB    58419 .<Solve>c__Iterator3                            
+  Callers (with count) that contribute at least for 1%:
+       58418  99 % .<RunBody>c__Iterator2::MoveNext()
+########################
+    3274 KB CSProlog.Env::MergeDict(Dictionary`2<string, Term>,Dictionary`2<string, Term>)
+        3274 KB    64492 System.Collections.Generic.Dictionary`2         
+  Callers (with count) that contribute at least for 1%:
+       64492  100 % .<RunBody>c__Iterator2::MoveNext()
+########################
+    1070 KB CSProlog.Clause::.ctor()
+        1070 KB    54799 System.Collections.Generic.List`1               
+  Callers (with count) that contribute at least for 1%:
+       54799  100 % CSProlog.Clause::NewFrame(int)
+########################
+    1070 KB CSProlog.Clause::NewFrame(int)
+        1070 KB    54799 CSProlog.Clause                                 
+  Callers (with count) that contribute at least for 1%:
+       54799  100 % CSProlog.Env::GoClause(Clause,Dictionary`2<string, Term>)
+########################
+     270 KB CSProlog.EmbeddedPredicate.EP_ArithmeticCompareOperater::Apply(Term)
+         270 KB     8659 .<Apply>c__Iterator0                            
+  Callers (with count) that contribute at least for 1%:
+        8659  100 % .<Solve>c__Iterator3::MoveNext()
+########################
+     183 KB CSProlog.Prolog::EmptyDict()
+         183 KB     3620 System.Collections.Generic.Dictionary`2         
+  Callers (with count) that contribute at least for 1%:
+        3620  100 % .<Apply>c__Iterator0::MoveNext()
+Total memory allocated: 284203 KB

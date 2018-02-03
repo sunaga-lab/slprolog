@@ -1,0 +1,710 @@
+   0  $accept : Entry $end
+
+   1  Entry : SyntaxBody Unknown
+   2        | SyntaxBody
+
+   3  SyntaxBody : StProgram Program
+   4             | StTerm Term
+
+   5  Program : ClauseList
+
+   6  ClauseList : ClauseList Clause
+   7             | Clause
+
+   8  Clause : Term Priod
+
+   9  Term : Identifier
+  10       | Number
+  11       | Identifier ParentheisOpen Term ParentheisClose
+  12       | Expr
+  13       | List
+
+  14  List : BracketOpen BracketClose
+  15       | BracketOpen Term BracketClose
+  16       | BracketOpen Term Guard Term BracketClose
+
+  17  Expr : Term OpEqual Term
+  18       | Term OpAdd Term
+  19       | Term OpSub Term
+  20       | Term OpMul Term
+  21       | Term OpDiv Term
+  22       | Term Comma Term
+  23       | Term BeginClauseBody Term
+  24       | Term OpIs Term
+  25       | ParentheisOpen Term ParentheisClose
+
+state 0
+	$accept : . Entry $end  (0)
+
+	StProgram  shift 1
+	StTerm  shift 2
+	.  error
+
+	Entry  goto 3
+	SyntaxBody  goto 4
+
+
+state 1
+	SyntaxBody : StProgram . Program  (3)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	Clause  goto 9
+	ClauseList  goto 10
+	List  goto 11
+	Expr  goto 12
+	Term  goto 13
+	Program  goto 14
+
+
+state 2
+	SyntaxBody : StTerm . Term  (4)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 15
+
+
+state 3
+	$accept : Entry . $end  (0)
+
+	$end  accept
+
+
+state 4
+	Entry : SyntaxBody . Unknown  (1)
+	Entry : SyntaxBody .  (2)
+
+	Unknown  shift 16
+	$end  reduce 2
+
+
+state 5
+	Term : Number .  (10)
+
+	.  reduce 10
+
+
+state 6
+	Term : Identifier .  (9)
+	Term : Identifier . ParentheisOpen Term ParentheisClose  (11)
+
+	ParentheisOpen  shift 17
+	$end  reduce 9
+	BeginClauseBody  reduce 9
+	Guard  reduce 9
+	Priod  reduce 9
+	Comma  reduce 9
+	Unknown  reduce 9
+	ParentheisClose  reduce 9
+	BracketClose  reduce 9
+	OpEqual  reduce 9
+	OpAdd  reduce 9
+	OpSub  reduce 9
+	OpMul  reduce 9
+	OpDiv  reduce 9
+	OpIs  reduce 9
+
+
+state 7
+	Expr : ParentheisOpen . Term ParentheisClose  (25)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 18
+
+
+state 8
+	List : BracketOpen . BracketClose  (14)
+	List : BracketOpen . Term BracketClose  (15)
+	List : BracketOpen . Term Guard Term BracketClose  (16)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	BracketClose  shift 19
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 20
+
+
+state 9
+	ClauseList : Clause .  (7)
+
+	.  reduce 7
+
+
+state 10
+	Program : ClauseList .  (5)
+	ClauseList : ClauseList . Clause  (6)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	$end  reduce 5
+	Unknown  reduce 5
+
+	Clause  goto 21
+	List  goto 11
+	Expr  goto 12
+	Term  goto 13
+
+
+state 11
+	Term : List .  (13)
+
+	.  reduce 13
+
+
+state 12
+	Term : Expr .  (12)
+
+	.  reduce 12
+
+
+state 13
+	Clause : Term . Priod  (8)
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	BeginClauseBody  shift 22
+	Priod  shift 23
+	Comma  shift 24
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	.  error
+
+
+state 14
+	SyntaxBody : StProgram Program .  (3)
+
+	.  reduce 3
+
+
+state 15
+	SyntaxBody : StTerm Term .  (4)
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	BeginClauseBody  shift 22
+	Comma  shift 24
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	$end  reduce 4
+	Unknown  reduce 4
+
+
+state 16
+	Entry : SyntaxBody Unknown .  (1)
+
+	.  reduce 1
+
+
+state 17
+	Term : Identifier ParentheisOpen . Term ParentheisClose  (11)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 31
+
+
+state 18
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+	Expr : ParentheisOpen Term . ParentheisClose  (25)
+
+	BeginClauseBody  shift 22
+	Comma  shift 24
+	ParentheisClose  shift 32
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	.  error
+
+
+state 19
+	List : BracketOpen BracketClose .  (14)
+
+	.  reduce 14
+
+
+state 20
+	List : BracketOpen Term . BracketClose  (15)
+	List : BracketOpen Term . Guard Term BracketClose  (16)
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	BeginClauseBody  shift 22
+	Guard  shift 33
+	Comma  shift 24
+	BracketClose  shift 34
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	.  error
+
+
+state 21
+	ClauseList : ClauseList Clause .  (6)
+
+	.  reduce 6
+
+
+state 22
+	Expr : Term BeginClauseBody . Term  (23)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 35
+
+
+state 23
+	Clause : Term Priod .  (8)
+
+	.  reduce 8
+
+
+state 24
+	Expr : Term Comma . Term  (22)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 36
+
+
+state 25
+	Expr : Term OpEqual . Term  (17)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 37
+
+
+state 26
+	Expr : Term OpAdd . Term  (18)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 38
+
+
+state 27
+	Expr : Term OpSub . Term  (19)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 39
+
+
+state 28
+	Expr : Term OpMul . Term  (20)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 40
+
+
+state 29
+	Expr : Term OpDiv . Term  (21)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 41
+
+
+state 30
+	Expr : Term OpIs . Term  (24)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 42
+
+
+state 31
+	Term : Identifier ParentheisOpen Term . ParentheisClose  (11)
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	BeginClauseBody  shift 22
+	Comma  shift 24
+	ParentheisClose  shift 43
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	.  error
+
+
+state 32
+	Expr : ParentheisOpen Term ParentheisClose .  (25)
+
+	.  reduce 25
+
+
+state 33
+	List : BracketOpen Term Guard . Term BracketClose  (16)
+
+	Number  shift 5
+	Identifier  shift 6
+	ParentheisOpen  shift 7
+	BracketOpen  shift 8
+	.  error
+
+	List  goto 11
+	Expr  goto 12
+	Term  goto 44
+
+
+state 34
+	List : BracketOpen Term BracketClose .  (15)
+
+	.  reduce 15
+
+
+state 35
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term BeginClauseBody Term .  (23)
+	Expr : Term . OpIs Term  (24)
+
+	Comma  shift 24
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	$end  reduce 23
+	BeginClauseBody  reduce 23
+	Guard  reduce 23
+	Priod  reduce 23
+	Unknown  reduce 23
+	ParentheisClose  reduce 23
+	BracketClose  reduce 23
+
+
+state 36
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term Comma Term .  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	$end  reduce 22
+	BeginClauseBody  reduce 22
+	Guard  reduce 22
+	Priod  reduce 22
+	Comma  reduce 22
+	Unknown  reduce 22
+	ParentheisClose  reduce 22
+	BracketClose  reduce 22
+
+
+state 37
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term OpEqual Term .  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	$end  reduce 17
+	BeginClauseBody  reduce 17
+	Guard  reduce 17
+	Priod  reduce 17
+	Comma  reduce 17
+	Unknown  reduce 17
+	ParentheisClose  reduce 17
+	BracketClose  reduce 17
+
+
+state 38
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term OpAdd Term .  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	OpMul  shift 28
+	OpDiv  shift 29
+	$end  reduce 18
+	BeginClauseBody  reduce 18
+	Guard  reduce 18
+	Priod  reduce 18
+	Comma  reduce 18
+	Unknown  reduce 18
+	ParentheisClose  reduce 18
+	BracketClose  reduce 18
+	OpEqual  reduce 18
+	OpAdd  reduce 18
+	OpSub  reduce 18
+	OpIs  reduce 18
+
+
+state 39
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term OpSub Term .  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	OpMul  shift 28
+	OpDiv  shift 29
+	$end  reduce 19
+	BeginClauseBody  reduce 19
+	Guard  reduce 19
+	Priod  reduce 19
+	Comma  reduce 19
+	Unknown  reduce 19
+	ParentheisClose  reduce 19
+	BracketClose  reduce 19
+	OpEqual  reduce 19
+	OpAdd  reduce 19
+	OpSub  reduce 19
+	OpIs  reduce 19
+
+
+state 40
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term OpMul Term .  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	.  reduce 20
+
+
+state 41
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term OpDiv Term .  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	.  reduce 21
+
+
+state 42
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+	Expr : Term OpIs Term .  (24)
+
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	$end  reduce 24
+	BeginClauseBody  reduce 24
+	Guard  reduce 24
+	Priod  reduce 24
+	Comma  reduce 24
+	Unknown  reduce 24
+	ParentheisClose  reduce 24
+	BracketClose  reduce 24
+	OpEqual  reduce 24
+	OpIs  reduce 24
+
+
+state 43
+	Term : Identifier ParentheisOpen Term ParentheisClose .  (11)
+
+	.  reduce 11
+
+
+state 44
+	List : BracketOpen Term Guard Term . BracketClose  (16)
+	Expr : Term . OpEqual Term  (17)
+	Expr : Term . OpAdd Term  (18)
+	Expr : Term . OpSub Term  (19)
+	Expr : Term . OpMul Term  (20)
+	Expr : Term . OpDiv Term  (21)
+	Expr : Term . Comma Term  (22)
+	Expr : Term . BeginClauseBody Term  (23)
+	Expr : Term . OpIs Term  (24)
+
+	BeginClauseBody  shift 22
+	Comma  shift 24
+	BracketClose  shift 45
+	OpEqual  shift 25
+	OpAdd  shift 26
+	OpSub  shift 27
+	OpMul  shift 28
+	OpDiv  shift 29
+	OpIs  shift 30
+	.  error
+
+
+state 45
+	List : BracketOpen Term Guard Term BracketClose .  (16)
+
+	.  reduce 16
+
+
+21 terminals, 9 nonterminals
+26 grammar rules, 46 states

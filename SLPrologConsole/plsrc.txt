@@ -1,0 +1,18 @@
+
+
+Term = Term.
+
+
+append([], List2, List2).
+append([List1Head|List1], List2, [List1Head|ResultBody]) :-
+	append(List1,List2,ResultBody).
+
+
+reverse(List, ListRev) :-
+	reverse(List, [], ListRev).
+
+reverse([], List, List).
+reverse([Head|Body], C, D) :-
+	reverse(Body, [Head|C], D).
+
+

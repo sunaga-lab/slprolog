@@ -1,0 +1,258 @@
+// < 
+// jay -c PrlgParserJay.jay < /usr/share/jay/skeleton.cs > PrlgParserJay.cs
+
+
+%{
+
+using System;
+using System.Collections.Generic;
+
+using CSProlog;
+
+
+namespace CSPrologJay
+{
+	using List_Term = List<Term>;
+	
+    public class Parser
+    {
+		private int yacc_verbose_flag = 0;
+		private Env env;
+		
+		public void SetEnv(Env e){env = e;}
+
+%}
+
+%token <String> Number
+%token <String> BeginClauseBody
+%token <String> Guard
+%token <String> Priod
+%token <String> Comma
+%token <String> Identifier
+
+%token <String> Unknown
+
+%token <String> ParentheisOpen
+%token <String> ParentheisClose
+%token <String> BracketOpen
+%token <String> BracketClose
+%token <String> OpEqual
+%token <String> OpAdd OpSub OpMul OpDiv
+%token <String> OpIs
+%token <String> OpNot
+%token <String> OpLe OpGe OpLt OpGt
+%token <String> OpExclamation
+%token <String> SingleQuoted
+%token <String> DoubleQuoted
+
+
+%token <String> StProgram StTerm
+
+
+%type <Clause> Clause
+%type <PrologProgram> ClauseList
+
+%type <Term> List
+%type <Term> Expr
+%type <Term> Term
+%type <Object> Entry
+%type <Object> SyntaxBody
+
+%type <PrologProgram> Program ClauseList
+%left BeginClauseBody
+%left Comma
+%right OpEqual
+%left OpIs
+%left OpLe OpGe OpLt OpGt
+%left OpAdd OpSub
+%left OpMul OpDiv
+
+
+%start Entry
+
+%%
+
+Entry
+    : SyntaxBody Unknown
+      {
+		$$ = $1;
+      }
+    | SyntaxBody
+      {
+		$$ = $1;
+      }
+    ;
+
+SyntaxBody
+	: StProgram Program
+	  {
+		$$ = $2;
+	  }
+	| StTerm Term
+	  {
+		$$ = $2;
+	  }
+	;
+Program
+    : ClauseList
+      {
+		$$ = $1;
+      }
+    ;
+
+ClauseList
+	: ClauseList Clause
+	  {
+	  	$1.Add($2);
+	  	$$ = $1;
+	  }
+	| Clause
+	  {
+	  	PrologProgram ret = new PrologProgram();
+	  	ret.Add($1);
+	  	$$ = ret;
+	  }
+	;
+
+Clause
+	: Term Priod
+	  {
+	  	$$ = new Clause($1);
+	  }
+	;
+
+
+Term
+	: OpExclamation
+	  {
+		Term ret;
+		$$ = Term.imm($1);
+	  }	
+	| Identifier
+	  {
+		Term ret;
+		if(char.IsUpper($1[0]))
+		{
+			ret = Term.var($1);
+		}
+		else
+		{
+			ret = Term.imm($1);
+		}
+		$$ = ret;
+	  }
+	| SingleQuoted
+	  {
+		$$ = Term.imm($1);
+	  }
+	| Number
+	  {
+		$$ = Term.Number($1);
+	  }
+	| Identifier ParentheisOpen Term ParentheisClose
+	  {
+		Term ret = new Term();
+		if(char.IsUpper($1[0]))
+		{
+			ret = Term.imm($1);
+		}
+		else
+		{
+			ret = Term.imm($1);
+		}
+		ret.SetPrms(Term.CommaListToList($3));
+		$$ = ret;
+	  }
+	| Expr
+	  {
+	  	$$ = $1;
+	  }
+	| List
+	  {
+	    $$ = $1;
+	  }
+	| DoubleQuoted
+	  {
+	    $$ = Term.StringToList($1);
+	  }
+	;
+
+
+List
+	: BracketOpen BracketClose
+	  {
+		$$ = Term.EmptyList();
+	  }
+	| BracketOpen Term BracketClose
+	  {
+		$$ = Term.ListToDotList(Term.CommaListToList($2));
+	  }
+	| BracketOpen Term Guard Term BracketClose
+	  {
+		$$ = Term.ListToDotList(Term.CommaListToList($2), $4);
+	  }
+	;
+
+Expr
+    : Term OpEqual Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpAdd Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpSub Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpMul Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpDiv Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term Comma Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term BeginClauseBody Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpIs Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpGe Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpGt Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpLe Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | Term OpLt Term
+      {
+      	$$ = Term.imm($2, $1, $3);
+      }
+    | ParentheisOpen Term ParentheisClose
+      {
+        $$ = $2;
+      }
+	;
+
+%%
+
+
+  }
+
+
+}
+
